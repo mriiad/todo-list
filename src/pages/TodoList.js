@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import NewItem from "../components/NewItem";
+import { initialList, todoReducer } from "../components/reducer/todo-reducer";
 import TodoItem from "../components/TodoItem";
 function TodoList() {
-  const [todoItems, setTodoItems] = useState([]);
+  const [todoState, dispatchTodo] = useReducer(todoReducer, initialList);
+
+  const addTodoListItemHandler = () => {
+    dispatchTodo({ type: "ADD_ITEM" });
+  };
 
   useEffect(() => {
     fetchTodoData();
@@ -15,25 +20,22 @@ function TodoList() {
         return response.json();
       })
       .then((responseData) => {
-        setTodoItems(responseData);
+        dispatchTodo({ type: "INIT", payload: responseData });
       });
   };
 
   const addNewTodoItem = (enteredText) => {
-    setTodoItems((prevState) => {
-      return [...prevState, { id: Math.random(), content: enteredText }];
-    });
+    dispatchTodo({ type: "ADD_ITEM", payload: enteredText });
   };
 
   const deleteTodoItem = (id) => {
-    setTodoItems((prevState) => {
-      return [...prevState.filter((todo) => todo.id !== id)];
-    });
+    dispatchTodo({ type: "DELETE_ITEM", payload: id });
   };
   return (
     <>
       <NewItem addNewTodo={addNewTodoItem} />
-      {todoItems?.map((todoItem) => (
+      {console.log(todoState.content)}
+      {todoState.content.map((todoItem) => (
         <TodoItem
           key={todoItem.id}
           id={todoItem.id}
