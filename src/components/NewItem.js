@@ -1,11 +1,11 @@
 import { useState } from "react";
 import NewItemForm from "./NewItemForm";
-function NewItem() {
+function NewItem({ addNewTodo }) {
   const [add, setAdd] = useState(false);
 
   const onAddNewTodoItem = (enteredText, adding) => {
     setAdd(adding);
-    console.log(enteredText);
+    addNewTodo(enteredText);
   };
   return (
     <div>
