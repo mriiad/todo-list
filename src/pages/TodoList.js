@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import NewItem from "../components/NewItem";
 import TodoItem from "../components/TodoItem";
-import { TODO_DATA } from "../data.js";
 function TodoList() {
   const [todoItems, setTodoItems] = useState({});
-  useEffect(() => setTodoItems(TODO_DATA));
 
-  /*
   useEffect(() => {
     fetchTodoData();
   }, []);
@@ -18,15 +15,17 @@ function TodoList() {
         return response.json();
       })
       .then((responseData) => {
-        console.log(responseData);
-        //setTodoItems(responseData.result.XXBTZEUR["a"][0] + " €");
+        setTodoItems(responseData);
+        console.log(todoItems);
       });
-  };*/
+  };
 
   return (
     <>
       <NewItem />
-      <TodoItem description={todoItems[0]?.description} />
+      {todoItems.map((todoItem) => (
+        <TodoItem description={todoItem?.content} />
+      ))}
     </>
   );
 }
