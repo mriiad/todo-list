@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function NewItemForm({ addNewItem }) {
+function NewItemForm({ addNewItem, cancelAdding }) {
   const [enteredText, setEnteredText] = useState("");
   const [adding, isAdding] = useState(false);
 
@@ -10,14 +10,20 @@ function NewItemForm({ addNewItem }) {
   };
 
   const onAjouterClickHandler = () => {
-    addNewItem(enteredText, adding);
     setEnteredText("");
-    isAdding(false);
+    addNewItem(enteredText);
   };
+
+  const onCancelClickHandler = () => {
+    isAdding(false);
+    cancelAdding(adding);
+  };
+
   return (
     <div>
       <input type="text" value={enteredText} onChange={onInputChangeHandler} />
       <button onClick={onAjouterClickHandler}>+</button>
+      <button onClick={onCancelClickHandler}>Cancel</button>
     </div>
   );
 }

@@ -34,7 +34,6 @@ function TodoList() {
   return (
     <>
       <NewItem addNewTodo={addNewTodoItem} />
-      {console.log(todoState.content)}
       {todoState.content.map((todoItem) => (
         <TodoItem
           key={todoItem.id}

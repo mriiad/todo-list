@@ -1,16 +1,28 @@
 import { useState } from "react";
 import NewItemForm from "./NewItemForm";
 function NewItem({ addNewTodo }) {
-  const [add, setAdd] = useState(false);
+  const [canAdd, setCanAdd] = useState(false);
 
-  const onAddNewTodoItem = (enteredText, adding) => {
-    setAdd(adding);
+  const onAddNewTodoItem = (enteredText) => {
     addNewTodo(enteredText);
   };
+
+  const onCancelAdding = (adding) => {
+    setCanAdd(adding);
+  };
+
   return (
     <div>
-      <button onClick={() => setAdd(true)}>Ajouter une nouvelle tache</button>
-      {add ? <NewItemForm addNewItem={onAddNewTodoItem} /> : null}
+      {!canAdd ? (
+        <button onClick={() => setCanAdd(true)}>
+          Ajouter une nouvelle tache
+        </button>
+      ) : (
+        <NewItemForm
+          addNewItem={onAddNewTodoItem}
+          cancelAdding={onCancelAdding}
+        />
+      )}
     </div>
   );
 }
