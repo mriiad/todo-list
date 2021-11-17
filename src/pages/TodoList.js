@@ -2,6 +2,7 @@ import { useEffect, useReducer } from "react";
 import NewItem from "../components/NewItem";
 import { initialList, todoReducer } from "../components/reducer/todo-reducer";
 import TodoItem from "../components/TodoItem";
+import { TODO_DATA } from "../data.js";
 function TodoList() {
   const [todoState, dispatchTodo] = useReducer(todoReducer, initialList);
 
@@ -21,6 +22,9 @@ function TodoList() {
       })
       .then((responseData) => {
         dispatchTodo({ type: "INIT", payload: responseData });
+      })
+      .catch((error) => {
+        dispatchTodo({ type: "INIT", payload: TODO_DATA });
       });
   };
 
