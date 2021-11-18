@@ -1,3 +1,19 @@
+# Todo List project
+
+## Main subjects:
+
+### React hooks:
+
+useState
+useReducer
+useEffect
+
+### react-router-dom-v6 => supporting deprecated components:
+
+Switch -> Routes
+Redirect -> Navigate
+New `Route` component prop: element
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
