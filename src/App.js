@@ -1,19 +1,19 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import MainHeader from "./components/MainHeader";
 import NewItem from "./components/NewItem";
-import Accueil from "./pages/Accueil";
 import TodoList from "./pages/TodoList";
+import Welcome from "./pages/Welcome";
 function App() {
   return (
     <div>
+      <MainHeader />
       <main>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/accueil" element={<Accueil />} />
-            <Route path="/todolist" element={<TodoList />} />
-            <Route path="/todolist/new-item" element={<NewItem />} />
-          </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route path="/welcome" element={<Welcome />} />
+          <Route path="/todolist" element={<TodoList />} />
+          <Route path="/todolist/new-item" element={<NewItem />} />
+        </Routes>
       </main>
     </div>
   );
