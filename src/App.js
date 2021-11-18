@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import MainHeader from "./components/MainHeader";
 import NewItem from "./components/NewItem";
@@ -10,6 +10,7 @@ function App() {
       <MainHeader />
       <main>
         <Routes>
+          <Route path="/" exact element={<Navigate replace to="/welcome" />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/todolist" element={<TodoList />} />
           <Route path="/todolist/new-item" element={<NewItem />} />
