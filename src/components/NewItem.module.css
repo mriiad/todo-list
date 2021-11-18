@@ -22,3 +22,8 @@
   background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
   background-color: #408c99;
 }
+
+.addTask__btn:active {
+  position: relative;
+  top: 2px;
+}
