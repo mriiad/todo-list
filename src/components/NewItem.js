@@ -1,5 +1,7 @@
 import { useState } from "react";
+import classes from "./NewItem.module.css";
 import NewItemForm from "./NewItemForm";
+
 function NewItem({ addNewTodo }) {
   const [canAdd, setCanAdd] = useState(false);
 
@@ -12,10 +14,13 @@ function NewItem({ addNewTodo }) {
   };
 
   return (
-    <div>
+    <div className={classes.newItem}>
       {!canAdd ? (
-        <button onClick={() => setCanAdd(true)}>
-          Ajouter une nouvelle tache
+        <button
+          className={classes.addTask__btn}
+          onClick={() => setCanAdd(true)}
+        >
+          Add a new task
         </button>
       ) : (
         <NewItemForm
