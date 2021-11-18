@@ -3,12 +3,10 @@ import NewItem from "../components/NewItem";
 import { initialList, todoReducer } from "../components/reducer/todo-reducer";
 import TodoItem from "../components/TodoItem";
 import { TODO_DATA } from "../data.js";
+import classes from "./TodoList.module.css";
+
 function TodoList() {
   const [todoState, dispatchTodo] = useReducer(todoReducer, initialList);
-
-  const addTodoListItemHandler = () => {
-    dispatchTodo({ type: "ADD_ITEM" });
-  };
 
   useEffect(() => {
     fetchTodoData();
@@ -23,7 +21,7 @@ function TodoList() {
       .then((responseData) => {
         dispatchTodo({ type: "INIT", payload: responseData });
       })
-      .catch((error) => {
+      .catch(() => {
         dispatchTodo({ type: "INIT", payload: TODO_DATA });
       });
   };
@@ -35,8 +33,9 @@ function TodoList() {
   const deleteTodoItem = (id) => {
     dispatchTodo({ type: "DELETE_ITEM", payload: id });
   };
+
   return (
-    <>
+    <div className={classes.todoList}>
       <NewItem addNewTodo={addNewTodoItem} />
       {todoState.content.map((todoItem) => (
         <TodoItem
@@ -46,7 +45,7 @@ function TodoList() {
           deleteTodoItem={deleteTodoItem}
         />
       ))}
-    </>
+    </div>
   );
 }
 
