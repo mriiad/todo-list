@@ -9,7 +9,7 @@ export const todoReducer = (state, action) => {
       return {
         content: [
           ...state.content,
-          { id: Math.random().toString(), content: action.payload },
+          { id: action.payload.contentId, content: action.payload.contentText },
         ],
       };
     case "DELETE_ITEM":

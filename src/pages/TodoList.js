@@ -2,7 +2,8 @@ import { useEffect, useReducer } from "react";
 import NewItem from "../components/NewItem";
 import { initialList, todoReducer } from "../components/reducer/todo-reducer";
 import TodoItem from "../components/TodoItem";
-import { TODO_DATA } from "../data.js";
+import { TODO_DATA } from "../utils/data.js";
+import { uid } from "../utils/uid";
 import classes from "./TodoList.module.css";
 
 function TodoList() {
@@ -27,7 +28,10 @@ function TodoList() {
   };
 
   const addNewTodoItem = (enteredText) => {
-    dispatchTodo({ type: "ADD_ITEM", payload: enteredText });
+    dispatchTodo({
+      type: "ADD_ITEM",
+      payload: { contentText: enteredText, contentId: uid() },
+    });
   };
 
   const deleteTodoItem = (id) => {
