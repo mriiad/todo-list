@@ -1,14 +1,14 @@
 # Todo List project
 
-## Main subjects:
+## Main subjects
 
-### React hooks:
+### React hooks
 
 useState
 useReducer
 useEffect
 
-### react-router-dom-v6 => supporting deprecated components:
+### react-router-dom-v6 => supporting deprecated components
 
 Switch -> Routes
 Redirect -> Navigate
