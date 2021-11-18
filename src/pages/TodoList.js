@@ -1,4 +1,5 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
+import Loader from "react-loader-spinner";
 import NewItem from "../components/NewItem";
 import { initialList, todoReducer } from "../components/reducer/todo-reducer";
 import TodoItem from "../components/TodoItem";
@@ -8,6 +9,7 @@ import classes from "./TodoList.module.css";
 
 function TodoList() {
   const [todoState, dispatchTodo] = useReducer(todoReducer, initialList);
+  const [loading, isLoading] = useState(false);
 
   useEffect(() => {
     fetchTodoData();
@@ -15,14 +17,20 @@ function TodoList() {
 
   const fetchTodoData = () => {
     const DATA_URL = "https://cat-todo-list.herokuapp.com/todos";
+    isLoading(true);
+
     fetch(DATA_URL)
       .then((response) => {
+        setTimeout(() => {
+          isLoading(false);
+        }, 3000);
         return response.json();
       })
       .then((responseData) => {
         dispatchTodo({ type: "INIT", payload: responseData });
       })
       .catch(() => {
+        isLoading(false);
         dispatchTodo({ type: "INIT", payload: TODO_DATA });
       });
   };
@@ -41,14 +49,25 @@ function TodoList() {
   return (
     <div className={classes.todoList}>
       <NewItem addNewTodo={addNewTodoItem} />
-      {todoState.content.map((todoItem) => (
-        <TodoItem
-          key={todoItem.id}
-          id={todoItem.id}
-          content={todoItem.content}
-          deleteTodoItem={deleteTodoItem}
+
+      {loading ? (
+        <Loader
+          type="Oval"
+          color="#46909F"
+          height={100}
+          width={100}
+          timeout={3000}
         />
-      ))}
+      ) : (
+        todoState.content.map((todoItem) => (
+          <TodoItem
+            key={todoItem.id}
+            id={todoItem.id}
+            content={todoItem.content}
+            deleteTodoItem={deleteTodoItem}
+          />
+        ))
+      )}
     </div>
   );
 }

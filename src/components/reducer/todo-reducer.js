@@ -2,7 +2,6 @@ export const initialList = { content: [] };
 export const todoReducer = (state, action) => {
   switch (action.type) {
     case "INIT": {
-      console.log(action.payload);
       return { content: action.payload };
     }
     case "ADD_ITEM":
