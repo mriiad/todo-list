@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
 import MainHeader from "./components/MainHeader";
 import NewItem from "./components/NewItem";
 import TodoList from "./pages/TodoList";
