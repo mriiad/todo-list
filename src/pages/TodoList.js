@@ -15,15 +15,13 @@ function TodoList() {
     fetchTodoData();
   }, []);
 
-  const fetchTodoData = () => {
+  const fetchTodoData = async () => {
     const DATA_URL = "https://cat-todo-list.herokuapp.com/todos";
-    isLoading(true);
+    await isLoading(true);
 
     fetch(DATA_URL)
-      .then((response) => {
-        setTimeout(() => {
-          isLoading(false);
-        }, 3000);
+      .then(async (response) => {
+        await isLoading(false);
         return response.json();
       })
       .then((responseData) => {
