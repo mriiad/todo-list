@@ -1,0 +1,13 @@
+.todoItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.todoItem:last-child {
+  margin-bottom: 0;
+}
+
+span {
+  margin-right: 30px;
+}

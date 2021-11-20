@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import classes from "./TodoItem.module.css";
+
 function TodoItem({ id, content, deleteTodoItem }) {
   const [itemContent, setItemContent] = useState("");
   const [itemId, setItemId] = useState("");
@@ -11,8 +13,8 @@ function TodoItem({ id, content, deleteTodoItem }) {
     deleteTodoItem(itemId);
   };
   return (
-    <div>
-      <span>{itemContent}</span>
+    <div className={classes.todoItem}>
+      <span cla>{itemContent}</span>
       <button onClick={onDeleteClickHandler}>-</button>
     </div>
   );

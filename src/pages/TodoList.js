@@ -47,25 +47,26 @@ function TodoList() {
   return (
     <div className={classes.todoList}>
       <NewItem addNewTodo={addNewTodoItem} />
-
-      {loading ? (
-        <Loader
-          type="Oval"
-          color="#46909F"
-          height={100}
-          width={100}
-          timeout={3000}
-        />
-      ) : (
-        todoState.content.map((todoItem) => (
-          <TodoItem
-            key={todoItem.id}
-            id={todoItem.id}
-            content={todoItem.content}
-            deleteTodoItem={deleteTodoItem}
+      <div className={classes.todoItems}>
+        {loading ? (
+          <Loader
+            type="Oval"
+            color="#46909F"
+            height={100}
+            width={100}
+            timeout={3000}
           />
-        ))
-      )}
+        ) : (
+          todoState.content.map((todoItem) => (
+            <TodoItem
+              key={todoItem.id}
+              id={todoItem.id}
+              content={todoItem.content}
+              deleteTodoItem={deleteTodoItem}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 }
