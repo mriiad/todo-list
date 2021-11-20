@@ -1,6 +1,9 @@
 .todoList {
   position: absolute;
-  width: -webkit-fill-available;
   text-align: center;
   top: 50%;
+}
+
+.todoItems {
+  border: 1px solid;
 }
