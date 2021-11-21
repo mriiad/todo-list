@@ -1,11 +1,19 @@
 .todoList {
   position: absolute;
+  width: 50%;
   text-align: center;
   top: 30%;
 }
 
 .todoItems {
+  position: absolute;
+  width: 100%;
   padding: 20px;
-  border: 5px solid;
-  border-radius: 10px;
+  border-top: 2px solid #044599;
+  border-bottom: 2px solid #95a2ce;
+  background-image: linear-gradient(#044599, #95a2ce),
+    linear-gradient(#044599, #95a2ce);
+  background-size: 2px 100%;
+  background-position: 0 0, 100% 0;
+  background-repeat: no-repeat;
 }
