@@ -47,7 +47,7 @@ function TodoList() {
   return (
     <div className={classes.todoList}>
       <NewItem addNewTodo={addNewTodoItem} />
-      <div className={classes.todoItems}>
+      <div className={todoState.content.length > 0 ? classes.todoItems : ""}>
         {loading ? (
           <Loader
             type="Oval"
