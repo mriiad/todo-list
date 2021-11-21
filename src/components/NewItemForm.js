@@ -1,4 +1,6 @@
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useState } from "react";
+import classes from "./NewItemForm.module.css";
 
 function NewItemForm({ addNewItem, cancelAdding }) {
   const [enteredText, setEnteredText] = useState("");
@@ -19,11 +21,18 @@ function NewItemForm({ addNewItem, cancelAdding }) {
     cancelAdding(adding);
   };
 
+  const pointerStyle = { cursor: "pointer" };
+
   return (
     <div>
-      <input type="text" value={enteredText} onChange={onInputChangeHandler} />
-      <button onClick={onAjouterClickHandler}>+</button>
       <button onClick={onCancelClickHandler}>Cancel</button>
+      <input
+        className={classes.newItem__control}
+        type="text"
+        value={enteredText}
+        onChange={onInputChangeHandler}
+      />
+      <AddCircleIcon onClick={onAjouterClickHandler} style={pointerStyle} />
     </div>
   );
 }

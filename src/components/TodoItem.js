@@ -1,3 +1,4 @@
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useEffect, useState } from "react";
 import classes from "./TodoItem.module.css";
 
@@ -12,10 +13,13 @@ function TodoItem({ id, content, deleteTodoItem }) {
   const onDeleteClickHandler = () => {
     deleteTodoItem(itemId);
   };
+
+  const pointerStyle = { cursor: "pointer" };
+
   return (
     <div className={classes.todoItem}>
-      <span cla>{itemContent}</span>
-      <button onClick={onDeleteClickHandler}>-</button>
+      <span>{itemContent}</span>
+      <DeleteIcon onClick={onDeleteClickHandler} style={pointerStyle} />
     </div>
   );
 }
