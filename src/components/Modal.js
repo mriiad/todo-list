@@ -1,9 +1,13 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import ReactDOM from 'react-dom';
+import TodoContext from '../store/todo-context';
 import classes from './Modal.module.css';
 
 const Backdrop = (props) => {
-	return <div className={classes.backdrop} />;
+	const todoCtx = useContext(TodoContext);
+	return (
+		<div onClick={todoCtx.onBackDropHide} className={classes.backdrop} />
+	);
 };
 
 const ModalOverlay = (props) => {

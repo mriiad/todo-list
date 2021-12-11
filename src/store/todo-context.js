@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const TodoContext = React.createContext({
 	isLoggedIn: false,
 	onAdd: () => {},
+	onBackDropHide: () => {},
 });
 
 export const TodoContextProvider = (props) => {
@@ -14,11 +15,16 @@ export const TodoContextProvider = (props) => {
 		}
 	};
 
+	const onBackDropHide = () => {
+		setIsNoData(false);
+	};
+
 	return (
 		<TodoContext.Provider
 			value={{
 				isNoData: isNoData,
 				onAdd: onAddClickHandler,
+				onBackDropHide: onBackDropHide,
 			}}
 		>
 			{props.children}
