@@ -9,10 +9,8 @@ const TodoContext = React.createContext({
 export const TodoContextProvider = (props) => {
 	const [isNoData, setIsNoData] = useState(false);
 
-	const onAddClickHandler = (enteredText) => {
-		if (enteredText === '') {
-			setIsNoData(true);
-		}
+	const onAddClickHandler = () => {
+		setIsNoData(true);
 	};
 
 	const onBackDropHide = () => {

@@ -17,8 +17,11 @@ function NewItemForm({ addNewItem, cancelAdding }) {
 
 	const onAjouterClickHandler = () => {
 		setEnteredText('');
-		todoCtx.onAdd(enteredText);
-		addNewItem(enteredText);
+		if (enteredText === '') {
+			todoCtx.onAdd();
+		} else {
+			addNewItem(enteredText);
+		}
 	};
 
 	const onCancelClickHandler = () => {
