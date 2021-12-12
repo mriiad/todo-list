@@ -1,12 +1,11 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
 import { Fragment, useContext, useState } from 'react';
 import TodoContext from '../store/todo-context';
 import { Modal } from './Modal';
 import classes from './NewItemForm.module.css';
 import NoData from './NoData';
 
-function NewItemForm({ addNewItem, cancelAdding }) {
+function NewItemForm({ addNewItem }) {
 	const todoCtx = useContext(TodoContext);
 
 	const [enteredText, setEnteredText] = useState('');
@@ -14,7 +13,6 @@ function NewItemForm({ addNewItem, cancelAdding }) {
 
 	const onInputChangeHandler = (e) => {
 		setEnteredText(e.target.value);
-		isAdding(true);
 	};
 
 	const onAjouterClickHandler = () => {
@@ -22,13 +20,10 @@ function NewItemForm({ addNewItem, cancelAdding }) {
 		if (enteredText === '') {
 			todoCtx.onAdd();
 		} else {
-			addNewItem(enteredText);
+			todoCtx.onBackDropHide(); // To close the portal
+			isAdding(false);
+			addNewItem(enteredText, adding);
 		}
-	};
-
-	const onCancelClickHandler = () => {
-		isAdding(false);
-		cancelAdding(adding);
 	};
 
 	const pointerStyle = { cursor: 'pointer' };
@@ -36,13 +31,8 @@ function NewItemForm({ addNewItem, cancelAdding }) {
 	return (
 		<Fragment>
 			{todoCtx.isNoData && <NoData />}
-
 			<Modal>
 				<div className={classes.newItem__control__container}>
-					<CancelIcon
-						onClick={onCancelClickHandler}
-						style={pointerStyle}
-					/>
 					<input
 						className={classes.newItem__control}
 						type='text'
