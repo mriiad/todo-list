@@ -1,15 +1,15 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Fragment, useContext, useState } from 'react';
 import TodoContext from '../store/todo-context';
+import { uid } from '../utils/uid';
 import { Modal } from './Modal';
 import classes from './NewItemForm.module.css';
-import NoData from './NoData';
+import NoDataMessageAlert from './NoDataMessageAlert';
 
-function NewItemForm({ addNewItem }) {
-	const todoCtx = useContext(TodoContext);
+function NewItemForm() {
+	const [state, dispatch] = useContext(TodoContext);
 
 	const [enteredText, setEnteredText] = useState('');
-	const [adding, isAdding] = useState(false);
 
 	const onInputChangeHandler = (e) => {
 		setEnteredText(e.target.value);
@@ -18,11 +18,14 @@ function NewItemForm({ addNewItem }) {
 	const onAjouterClickHandler = () => {
 		setEnteredText('');
 		if (enteredText === '') {
-			todoCtx.onAdd();
+			dispatch({
+				type: 'NO_DATA',
+			});
 		} else {
-			todoCtx.onBackDropHide(); // To close the portal
-			isAdding(false);
-			addNewItem(enteredText, adding);
+			dispatch({
+				type: 'ADD_ITEM',
+				payload: { contentText: enteredText, contentId: uid() },
+			});
 		}
 	};
 
@@ -30,7 +33,7 @@ function NewItemForm({ addNewItem }) {
 
 	return (
 		<Fragment>
-			{todoCtx.isNoData && <NoData />}
+			{state.isNoData && <NoDataMessageAlert />}
 			<Modal>
 				<div className={classes.newItem__control__container}>
 					<input

@@ -1,22 +1,21 @@
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import React, { useContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoContext from '../store/todo-context';
-import classes from './NoData.module.css';
+import classes from './NoDataMessageAlert.module.css';
 
-ReactDOM.createPortal(<NoData />, document.getElementById('overlays'));
+ReactDOM.createPortal(
+	<NoDataMessageAlert />,
+	document.getElementById('overlays')
+);
 
-function NoData() {
-	const todoCtx = useContext(TodoContext);
-
+function NoDataMessageAlert() {
 	return (
 		<Stack className={classes.noData} sx={{ width: '100%' }} spacing={2}>
 			<Alert
 				severity='error'
-				action={
+				/*action={
 					<Button
 						onClick={todoCtx.onBackDropHide}
 						color='inherit'
@@ -24,7 +23,7 @@ function NoData() {
 					>
 						UNDO
 					</Button>
-				}
+				}*/
 			>
 				<AlertTitle style={{ display: 'flex' }}>Error</AlertTitle>
 				This is an error alert — <strong>check it out!</strong>
@@ -33,4 +32,4 @@ function NoData() {
 	);
 }
 
-export default NoData;
+export default NoDataMessageAlert;

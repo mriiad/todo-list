@@ -1,26 +1,29 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import classes from './NewItem.module.css';
 import NewItemForm from './NewItemForm';
+import TodoContext from '../store/todo-context';
 
-function NewItem({ addNewTodo }) {
-	const [canAdd, setCanAdd] = useState(false);
+function NewItem() {
+	const [state, dispatch] = useContext(TodoContext);
 
-	const onAddNewTodoItem = (enteredText, adding) => {
-		addNewTodo(enteredText);
-		setCanAdd(adding);
+	const onAddNewTaskClickHander = () => {
+		dispatch({
+			type: 'IS_ADDING',
+			payload: { isAdding: true },
+		});
 	};
 
 	return (
 		<div className={classes.newItem}>
-			{!canAdd ? (
+			{!state.isAdding ? (
 				<button
 					className={classes.addTask__btn}
-					onClick={() => setCanAdd(true)}
+					onClick={onAddNewTaskClickHander}
 				>
 					Add a new task
 				</button>
 			) : (
-				<NewItemForm addNewItem={onAddNewTodoItem} />
+				<NewItemForm />
 			)}
 		</div>
 	);

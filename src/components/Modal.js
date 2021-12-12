@@ -4,9 +4,16 @@ import TodoContext from '../store/todo-context';
 import classes from './Modal.module.css';
 
 const Backdrop = (props) => {
-	const todoCtx = useContext(TodoContext);
+	const [state, dispatch] = useContext(TodoContext);
+
+	const onBackDropClickHandler = () => {
+		dispatch({
+			type: 'IS_ADDING',
+			payload: { isAdding: false },
+		});
+	};
 	return (
-		<div onClick={todoCtx.onBackDropHide} className={classes.backdrop} />
+		<div onClick={onBackDropClickHandler} className={classes.backdrop} />
 	);
 };
 
