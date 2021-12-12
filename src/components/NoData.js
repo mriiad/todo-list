@@ -26,7 +26,7 @@ function NoData() {
 					</Button>
 				}
 			>
-				<AlertTitle>Error</AlertTitle>
+				<AlertTitle style={{ display: 'flex' }}>Error</AlertTitle>
 				This is an error alert — <strong>check it out!</strong>
 			</Alert>
 		</Stack>
