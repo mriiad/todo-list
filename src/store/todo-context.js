@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const TodoContext = React.createContext({
-	isLoggedIn: false,
+	isNoData: false,
 	onAdd: () => {},
 	onBackDropHide: () => {},
 });

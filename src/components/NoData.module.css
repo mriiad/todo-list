@@ -1,0 +1,8 @@
+.noData {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: initial;
+	height: initial;
+	z-index: 50;
+}

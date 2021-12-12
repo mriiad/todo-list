@@ -1,17 +1,13 @@
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import MainHeader from './components/MainHeader';
 import NewItem from './components/NewItem';
-import NoData from './components/NoData';
 import TodoList from './pages/TodoList';
 import Welcome from './pages/Welcome';
-import TodoContext from './store/todo-context';
 
 function App() {
-	const todoCtx = useContext(TodoContext);
 	return (
 		<Fragment>
-			{todoCtx.isNoData && <NoData />}
 			<MainHeader />
 			<main>
 				<Routes>
