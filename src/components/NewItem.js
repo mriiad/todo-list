@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import classes from './NewItem.module.css';
 import NewItemForm from './NewItemForm';
 import TodoContext from '../store/todo-context';

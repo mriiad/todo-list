@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import TodoContext from '../store/todo-context';
 import classes from './Modal.module.css';
 
-const Backdrop = (props) => {
-	const [state, dispatch] = useContext(TodoContext);
+const Backdrop = () => {
+	const [dispatch] = useContext(TodoContext);
 
 	const onBackDropClickHandler = () => {
 		dispatch({

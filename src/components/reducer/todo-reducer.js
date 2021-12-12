@@ -15,12 +15,9 @@ export const todoReducer = (state, action) => {
 				],
 			};
 		case 'DELETE_ITEM':
-			console.log(
-				state.content.filter((content) => content.id != action.payload)
-			);
 			return {
 				content: state.content.filter(
-					(content) => content.id != action.payload
+					(content) => content.id !== action.payload
 				),
 			};
 		case 'NO_DATA':

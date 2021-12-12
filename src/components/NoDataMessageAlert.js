@@ -26,7 +26,7 @@ function NoDataMessageAlert() {
 				}*/
 			>
 				<AlertTitle style={{ display: 'flex' }}>Error</AlertTitle>
-				This is an error alert — <strong>check it out!</strong>
+				No entered text was detected — <strong>try again!</strong>
 			</Alert>
 		</Stack>
 	);

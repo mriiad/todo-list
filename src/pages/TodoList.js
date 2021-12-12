@@ -1,11 +1,9 @@
-import { useContext, useEffect, useReducer, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
 import NewItem from '../components/NewItem';
-import { initialList, todoReducer } from '../components/reducer/todo-reducer';
 import TodoItem from '../components/TodoItem';
 import TodoContext from '../store/todo-context';
 import { TODO_DATA } from '../utils/data.js';
-import { uid } from '../utils/uid';
 import classes from './TodoList.module.css';
 
 function TodoList() {
