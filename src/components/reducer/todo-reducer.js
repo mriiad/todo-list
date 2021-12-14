@@ -23,7 +23,7 @@ export const todoReducer = (state, action) => {
 		case 'NO_DATA':
 			return {
 				...state,
-				isNoData: true,
+				isNoData: action.payload.isNoData,
 			};
 		case 'IS_ADDING':
 			return {

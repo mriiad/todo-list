@@ -20,6 +20,7 @@ function NewItemForm() {
 		if (enteredText === '') {
 			dispatch({
 				type: 'NO_DATA',
+				payload: { isNoData: true },
 			});
 		} else {
 			dispatch({
