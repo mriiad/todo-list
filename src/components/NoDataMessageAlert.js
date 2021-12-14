@@ -13,9 +13,11 @@ ReactDOM.createPortal(
 function NoDataMessageAlert() {
 	return (
 		<Stack className={classes.noData} sx={{ width: '100%' }} spacing={2}>
-			<Alert
-				severity='error'
-				/*action={
+			<Expire>
+				<Alert
+					severity='error'
+
+					/*action={
 					<Button
 						onClick={todoCtx.onBackDropHide}
 						color='inherit'
@@ -24,10 +26,11 @@ function NoDataMessageAlert() {
 						UNDO
 					</Button>
 				}*/
-			>
-				<AlertTitle style={{ display: 'flex' }}>Error</AlertTitle>
-				No entered text was detected — <strong>try again!</strong>
-			</Alert>
+				>
+					<AlertTitle style={{ display: 'flex' }}>Error</AlertTitle>
+					No entered text was detected — <strong>try again!</strong>
+				</Alert>
+			</Expire>
 		</Stack>
 	);
 }
