@@ -4,7 +4,7 @@ import TodoContext from '../store/todo-context';
 import classes from './Modal.module.css';
 
 const Backdrop = () => {
-	const [dispatch] = useContext(TodoContext);
+	const [, dispatch] = useContext(TodoContext);
 
 	const onBackDropClickHandler = () => {
 		dispatch({
