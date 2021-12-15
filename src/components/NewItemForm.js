@@ -30,22 +30,24 @@ function NewItemForm() {
 		}
 	};
 
-	const pointerStyle = { cursor: 'pointer' };
-
 	return (
 		<Fragment>
 			{state.isNoData && <NoDataMessageAlert />}
 			<Modal>
 				<div className={classes.newItem__control__container}>
+					<h2 className={classes.newItem__control__title}>
+						ADD NEW TASK
+					</h2>
 					<input
 						className={classes.newItem__control}
 						type='text'
 						value={enteredText}
 						onChange={onInputChangeHandler}
+						placeholder='Any task to do ? Just do it!'
 					/>
 					<AddCircleIcon
 						onClick={onAjouterClickHandler}
-						style={pointerStyle}
+						style={{ cursor: 'pointer' }}
 					/>
 				</div>
 			</Modal>

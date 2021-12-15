@@ -1,15 +1,14 @@
-.newItem__control__container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
 .newItem__control {
-  font: inherit;
-  padding: 0.5rem;
-  margin-left: 20px;
-  margin-right: 20px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  width: 20rem;
-  max-width: 100%;
+	font: inherit;
+	padding: 0.5rem;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	width: 20rem;
+	max-width: 100%;
+}
+
+.newItem__control__title {
+	text-align: center;
 }
